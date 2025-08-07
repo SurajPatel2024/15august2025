@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -13,7 +13,7 @@
       margin: 0;
       display: flex;
       min-height: 100dvh;
-      perspective: 1000px;
+      perspective: 900px;
       font-family: "Poppins", sans-serif;
       background-image: radial-gradient(circle at 50% 50%, hsl(187 20% 88%) 30%, hsl(149 20% 94%) 100%);
       overflow: hidden;
@@ -147,10 +147,10 @@
    }
    .wish-message{
     position: absolute;
-    bottom: 20px; /* Change to `top: 0` if you want it at the top */
+    top: 20px; /* Change to `top: 0` if you want it at the top */
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1.2em;
+    font-size: 2.2em;
     text-align: center;
    }
 </style>
@@ -160,7 +160,92 @@
 <a href="#" id="whatsapp-share" target="_blank" title="Share on WhatsApp">
   <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" />
 </a>
-<h4 class="wish-message">🇮🇳 स्वतंत्रता दिवस की शुभकामनाएं – 15 अगस्त 2025 🇮🇳</h4>
+<h4 class="wish-message">
+
+  <svg width="30" height="20" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Saffron -->
+  <rect width="900" height="200" fill="#FF9933"/>
+  <!-- White -->
+  <rect y="200" width="900" height="200" fill="#FFFFFF"/>
+  <!-- Green -->
+  <rect y="400" width="900" height="200" fill="#138808"/>
+  
+  <!-- Ashoka Chakra -->
+  <circle cx="450" cy="300" r="60" fill="#000080"/>
+  <g transform="translate(450,300)" stroke="#FFFFFF" stroke-width="2">
+    <circle r="60" fill="none"/>
+    <!-- 24 spokes -->
+    <g id="spoke">
+      <line y1="0" y2="-60"/>
+    </g>
+    <use href="#spoke" transform="rotate(15)"/>
+    <use href="#spoke" transform="rotate(30)"/>
+    <use href="#spoke" transform="rotate(45)"/>
+    <use href="#spoke" transform="rotate(60)"/>
+    <use href="#spoke" transform="rotate(75)"/>
+    <use href="#spoke" transform="rotate(90)"/>
+    <use href="#spoke" transform="rotate(105)"/>
+    <use href="#spoke" transform="rotate(120)"/>
+    <use href="#spoke" transform="rotate(135)"/>
+    <use href="#spoke" transform="rotate(150)"/>
+    <use href="#spoke" transform="rotate(165)"/>
+    <use href="#spoke" transform="rotate(180)"/>
+    <use href="#spoke" transform="rotate(195)"/>
+    <use href="#spoke" transform="rotate(210)"/>
+    <use href="#spoke" transform="rotate(225)"/>
+    <use href="#spoke" transform="rotate(240)"/>
+    <use href="#spoke" transform="rotate(255)"/>
+    <use href="#spoke" transform="rotate(270)"/>
+    <use href="#spoke" transform="rotate(285)"/>
+    <use href="#spoke" transform="rotate(300)"/>
+    <use href="#spoke" transform="rotate(315)"/>
+    <use href="#spoke" transform="rotate(330)"/>
+    <use href="#spoke" transform="rotate(345)"/>
+  </g>
+</svg>
+ स्वतंत्रता दिवस की शुभकामनाएं – 15 अगस्त 2025 
+ <svg width="30" height="20" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Saffron -->
+  <rect width="900" height="200" fill="#FF9933"/>
+  <!-- White -->
+  <rect y="200" width="900" height="200" fill="#FFFFFF"/>
+  <!-- Green -->
+  <rect y="400" width="900" height="200" fill="#138808"/>
+  
+  <!-- Ashoka Chakra -->
+  <circle cx="450" cy="300" r="60" fill="#000080"/>
+  <g transform="translate(450,300)" stroke="#FFFFFF" stroke-width="2">
+    <circle r="60" fill="none"/>
+    <!-- 24 spokes -->
+    <g id="spoke">
+      <line y1="0" y2="-60"/>
+    </g>
+    <use href="#spoke" transform="rotate(15)"/>
+    <use href="#spoke" transform="rotate(30)"/>
+    <use href="#spoke" transform="rotate(45)"/>
+    <use href="#spoke" transform="rotate(60)"/>
+    <use href="#spoke" transform="rotate(75)"/>
+    <use href="#spoke" transform="rotate(90)"/>
+    <use href="#spoke" transform="rotate(105)"/>
+    <use href="#spoke" transform="rotate(120)"/>
+    <use href="#spoke" transform="rotate(135)"/>
+    <use href="#spoke" transform="rotate(150)"/>
+    <use href="#spoke" transform="rotate(165)"/>
+    <use href="#spoke" transform="rotate(180)"/>
+    <use href="#spoke" transform="rotate(195)"/>
+    <use href="#spoke" transform="rotate(210)"/>
+    <use href="#spoke" transform="rotate(225)"/>
+    <use href="#spoke" transform="rotate(240)"/>
+    <use href="#spoke" transform="rotate(255)"/>
+    <use href="#spoke" transform="rotate(270)"/>
+    <use href="#spoke" transform="rotate(285)"/>
+    <use href="#spoke" transform="rotate(300)"/>
+    <use href="#spoke" transform="rotate(315)"/>
+    <use href="#spoke" transform="rotate(330)"/>
+    <use href="#spoke" transform="rotate(345)"/>
+  </g>
+</svg>
+</h4>
   <div id="player2" style="display: none;"></div> <!-- for music -->
   <div id="player" style="display: none;"></div> <!-- for page sound -->
   <div class="book" onclick="playAudio() ,playmusic()">
