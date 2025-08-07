@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>भारत का 79वाँ स्वतंत्रता दिवस</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      display: flex;
+      min-height: 100dvh;
+      perspective: 1000px;
+      font-family: "Poppins", sans-serif;
+      background-image: radial-gradient(circle at 50% 50%, hsl(187 20% 88%) 30%, hsl(149 20% 94%) 100%);
+      overflow: hidden;
+      font-family: 'Georgia', serif;
+       color: #000080; 
+    }
+
+    .book {
+      position: relative;
+      display: flex;
+      margin: auto;
+      width: 40cqmin;
+      pointer-events: none;
+      transform-style: preserve-3d;
+      transition: translate 1s;
+      translate: calc(min(var(--c), 1) * 50%) 0%;
+      rotate: 1 0 0 30deg;
+      counter-reset: page -1;
+    }
+
+    .page {
+      --thickness: 4;
+      flex: none;
+      display: flex;
+      width: 100%;
+      font-size: 2cqmin;
+      pointer-events: all;
+      user-select: none;
+      transform-style: preserve-3d;
+      transform-origin: left center;
+      transition: transform 1s, rotate 1s ease-in calc((min(var(--i), var(--c)) - max(var(--i), var(--c))) * 50ms);
+      translate: calc(var(--i) * -100%) 0 0;
+      transform: translateZ(calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * .23cqmin)));
+      rotate: 0 1 0 calc(clamp(0, var(--c) - var(--i), 1) * -180deg);
+      box-shadow: 0em .5em 1em -.2em #00000020;
+    }
+
+    .front,
+    .back {
+      position: relative;
+      flex: none;
+      width: 100%;
+      backface-visibility: hidden;
+      overflow: hidden;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 2em 2em 2em 5px;
+      border: 1px solid #0002;
+      translate: 0px;
+    }
+
+    .front::after,
+    .back::after {
+      position: absolute;
+      bottom: 1em;
+      counter-increment: page;
+      content: counter(page) ".";
+      font-size: 0.8em;
+    }
+
+    .front::after {
+      right: 1em;
+    }
+
+    .back::after {
+      left: 1em;
+    }
+
+    .back {
+      translate: -100% 0;
+      rotate: 0 1 0 180deg;
+    }
+
+    .front img,
+    .back img {
+      width: calc(100% - 5px);
+      margin-left: 5px;
+      margin-top: 1em;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .cover::after {
+      content: "";
+    }
+
+    .front {
+      background: linear-gradient(to left, #f7f7f7 80%, #eee 100%);
+      border-radius: .1em .5em .5em .1em;
+    }
+
+    .back {
+      background-image: linear-gradient(to right, #f7f7f7 80%, #eee 100%);
+      border-radius: .5em .1em .1em .5em;
+    }
+
+    .cover {
+      background: radial-gradient(circle at 80% 20%, hsl(150 80% 20% / .3) 0%, hsl(170 60% 10% / .1) 100%),
+        hsl(231, 32%, 29%) url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpp6ZfwPMnfEHvnTprC8vR4xprX97Y3YZpfLiTV6R-0NLeljxM8uwQkN26&s=10") 50% / cover;
+      color: hsl(200 30% 98%);
+    }
+  </style>
+</head>
+<style>
+  .fp {
+    position: absolute;
+    top: 80%;
+    left: 10px;
+    
+  }
+  p{
+    font-family: 'Georgia', serif;
+      text-align: center;
+ 
+      background-image: linear-gradient(
+        to bottom,
+        #FF9933 0%,     /* Saffron */
+        #FFFFFF 33%,    /* White */
+        #138808 66%     /* Green */
+      );
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  
+</style>
+
+<body>
+  <!-- WhatsApp Floating Share Button -->
+<a href="#" id="whatsapp-share" target="_blank" title="Share on WhatsApp">
+  <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" />
+</a>
+
+  <div id="player2" style="display: none;"></div> <!-- for music -->
+  <div id="player" style="display: none;"></div> <!-- for page sound -->
+  <div class="book" onclick="playAudio() ,playmusic()">
+    <div class="page" onclick="playAudio()">
+      <div class="front cover" onclick="playAudio()">
+        <h1  >स्वतंत्रता के रंग</h1>
+        <div class="fp">
+          <p>15 august 2025.<br>79वाँ स्वतंत्रता दिवस</p>
+        </div>
+
+      </div>
+      <div class="back">
+
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="front">
+        <h3>भारत का गौरव – 79वाँ स्वतंत्रता दिवस
+         <br>  आइए गर्व से मनाएँ आज़ादी का पर्व।</h3>
+        
+       
+
+      </div>
+      <div class="back">
+
+        <h2 id="changing-text"></h2>
+      </div>
+    </div>
+    <div class="page">
+      <div class="front">
+        <h3>सरहद पर जो रातें जागकर बिताते हैं,
+          हमारी नींद की कीमत वही चुकाते हैं।
+          सलाम है उन वीर जवानों को,
+          जो तिरंगे के लिए जान भी लुटाते हैं।</h3>
+
+      </div>
+      <div class="back">
+        <h2>ना पूछो ज़माने को,
+          क्या हमारी कहानी है,
+          हमारी पहचान तो बस ये है –
+          हम हिंदुस्तानी हैं।
+        </h2>
+      </div>
+    </div>
+
+
+    <div class="page">
+      <div class="front">
+        <h2>सरफ़रोशी की तमन्ना अब हमारे दिल में है,
+          देखना है ज़ोर कितना बाज़ू-ए-क़ातिल में है!
+        </h2>
+
+      </div>
+      <div class="back">
+        <h2>जो देश के नाम पर मिट गया,
+          वो सच्चा वीर कहलाया।
+          उसके खून की हर बूँद ने,
+          भारत को और चमकाया। 🩸
+        </h2>
+      </div>
+    </div>
+
+
+
+    <div class="page">
+      <div class="front">
+        <h2>सरफ़रोशी की तमन्ना अब हमारे दिल में है,
+          देखना है ज़ोर कितना बाज़ू-ए-क़ातिल में है!
+        </h2>
+
+      </div>
+      <div class="back">
+        <h2>जो देश के नाम पर मिट गया,
+          वो सच्चा वीर कहलाया।
+          उसके खून की हर बूँद ने,
+          भारत को और चमकाया। 🩸
+        </h2>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="front">
+        <h3>भारत माँ के चरणों में जीवन अर्पण कर जाएँगे,
+          हर बूँद से वंदे मातरम् गाएँगे।
+          मरते दम तक देश के काम आएँगे,
+          देशभक्त हैं, देश के लिए जी जाएँगे। 🙏
+        </h3>
+      </div>
+      <div class="back">
+        <h3>जहाँ डाल-डाल पर सोने की चिड़ियाँ करती हैं बसेरा,
+          वो भारत देश है मेरा।
+          जहाँ सत्य, अहिंसा और धर्म का डेरा,
+          वो भारत देश है मेरा। 🌸
+        </h3>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="front">
+        <h3> भारत माता की जय</h3>
+
+      </div>
+      <div class="back">
+        <h2>🔥 प्रमुख स्वतंत्रता सेनानी</h2>
+        <ul>
+          <li>महात्मा गांधी</li>
+          <li>सुभाष चंद्र बोस</li>
+          <li>भगत सिंह</li>
+          <li>चंद्रशेखर आज़ाद</li>
+          <li>लाल बहादुर शास्त्री</li>
+          <li>सरदार वल्लभभाई पटेल</li>
+          <li>डॉ. भीमराव अंबेडकर</li>
+          <li>राजगुरु, सुखदेव</li>
+          <li>बाल गंगाधर तिलक</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="front">
+        <h3>मैं भारत का रहने वाला हूँ,
+          तिरंगे से प्यार निभाने वाला हूँ।
+          मिट जाऊँगा वतन के नाम पर,
+          मैं अपने देश पे मरने वाला हूँ।
+        </h3>
+      </div>
+      <div class="back cover">
+
+
+        <h4 style="position: absolute; top: 84%;"><a style="color: rgb(0, 119, 255); "
+            href="https://www.linkedin.com/in/suraj-patel-webdev?original_referer=https%3A%2F%2Fchatgpt.com%2F"
+            target="_blank">
+            <span style="color:#FF9933">Code by:- </span>
+            <span style="color:#000080">Suraj</span>
+            <span style="color:#138808">Patel</span></a></h4>
+      </div>
+    </div>
+  </div>
+  <iframe id="yt-player" width="0" height="0" style="display:none;" frameborder="0" allow="autoplay" allowfullscreen>
+  </iframe>
+  <script>
+    // 🔁 Add your images here (12 images for 6 pages × 2 sides)
+    const images = [
+      '',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcLhFaeMFKI0jpQ7XB9kpbNTekHq2gLASJHuONx-hKgtEmMIVsrf9eoYA&s=10', //page 1
+      'https://png.pngtree.com/png-clipart/20230913/original/pngtree-15-august-happy-independence-day-india-vector-png-image_11062094.png', //page 2
+      'https://media1.tenor.com/m/hj0ReXTUcKoAAAAd/happy-independence-day-15th-august.gif', //page 3
+      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjo2cGRw240X2JQ-MlHPJSsAnypmJBSmfWjOyWYuRantjKgf6k8WWyWCRMAH55mSKjVt0ViIotu26QYV5a3rN2H_WwLzV7bUEdRaSiwSrbpMM0-gIIITLYFj6UmhJK6k-xn0rUq7Ut15Irx/s640/tumblr_ngn4rlAU131tjfjuco2_400.gif', //page 4
+      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8XAh8ml7MVBFHvJ4AoMSWJDp2_rVYeNINeXv70L1c1cfEUeImBIZlracRyQUl97MYoiHalrkfTGO-Y5PDsZmFkD8ES3KhGLoey6-eezqVWcpsIVZK4yxjv4XsC0wzjCWUgLtVxIVb7DTG/s640/flag_zpsdjeayssk.gif', //page 5
+      'https://i.pinimg.com/originals/11/8c/c4/118cc4650053778d80a3baea34b39e11.gif', //page 5
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUIkrtO7BMnabzk5GgfSyW7VzlS9ejh-kX0Yydklg1mEujH0lbbl8MTHbq&s=10', //page 1
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVmhxTigIfkEq1TmeqgX3g7fUulcqfnSm3Co8lvKlFVeu8ObNYHuPORJBR&s=10', //page 1
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ730RqyXWsKIGxfHT7E1uAXFeMaIxZjsqfUqS6a-1biBibDY4JkGYBNWhL&s=10', //page 1
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8VQqNyI5HAnEUXuYoZ4xN7RmaDGkoNFZb-Z0kSliO1nA52lY9p_oIZYSb&s=10',//page 1
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST5OdYlizUbJp3UwCEk3bl0a10E6P_YURoccn-EQpon0YLKBEFueJgHTk&s=10',//page 1
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv-DH2eU3j3aDTEak45u1tpwaiUI_v6g1C8w&s', //page 
+      '',        //page
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgjaY-VB5Il-Ew6pmqiq841kWYqRI8QmPCPD4h-wJp7_woXWxtXI3ZpczC&s=10', //page
+      '',
+    ];
+
+    const allSides = document.querySelectorAll('.front, .back');
+    allSides.forEach((side, idx) => {
+      if (images[idx]) {
+        const img = document.createElement('img');
+        img.src = images[idx];
+        img.alt = `Page Image ${idx + 1}`;
+        side.appendChild(img);
+      }
+    });
+
+    const flipBook = (elBook) => {
+      elBook.style.setProperty("--c", 0);
+      elBook.querySelectorAll(".page").forEach((page, idx) => {
+        page.style.setProperty("--i", idx);
+        page.addEventListener("click", (evt) => {
+          if (evt.target.closest("a")) return;
+          const curr = evt.target.closest(".back") ? idx : idx + 1;
+          elBook.style.setProperty("--c", curr);
+        });
+      });
+    };
+
+    document.querySelectorAll(".book").forEach(flipBook);
+
+
+
+
+
+
+
+
+  </script>
+
+  <script>
+    // for play music
+    let player2;
+    function playmusic() {
+      if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') {
+        let tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        let firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        window.onYouTubeIframeAPIReady = function () {
+          createPlayer();
+        };
+      } else {
+        createPlayer();
+      }
+    }
+
+    function createPlayer() {
+      player2 = new YT.Player('player2', {
+        height: '0',
+        width: '0',
+        videoId: 'W-r14b-1flg', // YouTube video ID
+        playerVars: {
+          autoplay: 1,  // Auto-play enabled
+          controls: 0,  // Hide controls
+          showinfo: 0,
+          modestbranding: 1,
+          loop: 1, // Loop audio
+          start: 0, // Start at 2 seconds
+          // Stop at 3 seconds
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      event.target.playVideo(); // Start playing automatically
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.ENDED) {
+        player2.seekTo(2); // Loop back to 2 seconds
+        player2.playVideo();
+      }
+    }
+
+
+
+    //  for page sound              
+    let player;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '0', // Hide video
+        width: '0',
+        videoId: 'tAADqtTtT7k', // Your YouTube video ID
+        playerVars: {
+          autoplay: 0, // Don't auto-play initially
+          controls: 0, // Hide controls
+          showinfo: 0,
+          modestbranding: 1,
+          loop: 1, // Loop audio
+          start: 2, // ⬅ 2 सेकंड पर शुरू
+          end: 3   // ⬅ 3 सेकंड पर रुकेगा
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      console.log("YouTube Player Ready");
+    }
+
+    function playAudio() {
+      if (player) {
+        player.seekTo(2); // ⬅ सुनिश्चित करें कि वीडियो 2 सेकंड पर सीक होगा
+        player.playVideo();
+      }
+    }
+
+    function pauseAudio() {
+      if (player) {
+        player.pauseVideo();
+      }
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        setTimeout(() => {
+          if (player.getCurrentTime() >= 3) { // ⬅ 3 सेकंड पर रुकना
+            player.pauseVideo();
+          }
+        }, 1000); // 1 सेकंड बाद चेक करना
+      }
+    }
+
+    // Load YouTube API
+    let tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    let firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+    //  for Hand click animation
+    const hand = document.getElementById("hand");
+    hand.addEventListener("mousedown", () => {
+      hand.classList.add("clicked");
+    });
+    hand.addEventListener("mouseup", () => {
+      hand.classList.remove("clicked");
+    });
+  </script>
+
+  <script>
+    const lines = [
+      "🩺 सलाम डॉक्टरों को जो ज़िंदगी बचाते हैं।",
+      "🛠️ सलाम इंजीनियरों को जो भविष्य बनाते हैं।",
+      "  गर्व है हमें अपने भारत पर!",
+      "💡 मेहनत से जो चमके, वही असली सितारे हैं।",
+      "🙏 जय हिन्द, जय भारत!"
+    ];
+
+    let index = 0;
+    const h2 = document.getElementById("changing-text");
+
+    setInterval(() => {
+      h2.style.opacity = 0;
+      setTimeout(() => {
+        index = (index + 1) % lines.length;
+        h2.textContent = lines[index];
+        h2.style.color = 'red'
+        h2.style.opacity = 1;
+      }, 500); // match the CSS transition
+    }, 3000); // change every 3 seconds
+  </script>
+  <style>
+    h2,
+    h3 {
+
+      font-family: 'Georgia', serif;
+      /* Book-style look */
+      line-height: 1.4;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      max-width: 800px;
+
+      background-image: linear-gradient(90deg,
+          #FF9933,
+          /* Saffron */
+          #FFFFFF,
+          /* White */
+          #138808,
+          /* Green */
+          #000080,
+          /* Navy Blue */
+          #FF9933
+          /* Loop back to saffron */
+        );
+      background-size: 800% 100%;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: tirangaShift 10s ease-in-out infinite;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes tirangaShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+     h1{
+      font-size: 3em;
+      font-family: 'Georgia', serif;
+      text-align: center;
+      padding: 20px;
+
+      background-image: linear-gradient(
+        to bottom,
+        #FF9933 10%,     /* Saffron */
+        #FFFFFF 33%,    /* White */
+        #138808 66%     /* Green */
+      );
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+
+    #whatsapp-share {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #25D366;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+#whatsapp-share:hover {
+  transform: scale(1.1);
+}
+
+#whatsapp-share img {
+  width: 48px;
+  height: 48px;
+}
+
+  
+  </style>
+
+
+  <script>
+  const shareTitle = "🇮🇳 भारत माता की जय!";
+  const shareMessage = "देखिए यह सुंदर तिरंगा एनिमेटेड पेज:";
+  const pageUrl = window.location.href;
+
+  const whatsappLink = `https://wa.me/?text=${encodeURIComponent(shareTitle + "\n" + shareMessage + "\n" + pageUrl)}`;
+  document.getElementById("whatsapp-share").href = whatsappLink;
+</script>
+
+</body>
+
+</html>
