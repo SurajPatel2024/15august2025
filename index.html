@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 
 <head>
@@ -142,7 +142,17 @@
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   }
 
-  
+   body{
+    background: linear-gradient(to right, #FF9933, #FFFFFF, #138808); /* Tiranga */
+   }
+   .wish-message{
+    position: absolute;
+    bottom: 20px; /* Change to `top: 0` if you want it at the top */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2em;
+    text-align: center;
+   }
 </style>
 
 <body>
@@ -150,7 +160,7 @@
 <a href="#" id="whatsapp-share" target="_blank" title="Share on WhatsApp">
   <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" />
 </a>
-
+<h4 class="wish-message">🇮🇳 स्वतंत्रता दिवस की शुभकामनाएं – 15 अगस्त 2025 🇮🇳</h4>
   <div id="player2" style="display: none;"></div> <!-- for music -->
   <div id="player" style="display: none;"></div> <!-- for page sound -->
   <div class="book" onclick="playAudio() ,playmusic()">
@@ -578,12 +588,14 @@
 
 
   <script>
-  const shareTitle = "🇮🇳 भारत माता की जय!";
-  const shareMessage = "देखिए यह सुंदर तिरंगा एनिमेटेड पेज:";
-  const pageUrl = window.location.href;
+const shareTitle = "🇮🇳 भारत माता की जय!";
+const shareMessage = "✨ देखिए यह सुंदर तिरंगा एनिमेटेड पेज:\n\n👨‍💻 Code by: Suraj Patel";
+const pageUrl = window.location.href;
 
-  const whatsappLink = `https://wa.me/?text=${encodeURIComponent(shareTitle + "\n" + shareMessage + "\n" + pageUrl)}`;
-  document.getElementById("whatsapp-share").href = whatsappLink;
+const whatsappLink = `https://wa.me/?text=${encodeURIComponent(`${shareTitle}\n\n${shareMessage}\n\n🔗 ${pageUrl}`)}`;
+document.getElementById("whatsapp-share").href = whatsappLink;
+
+
 </script>
 
 </body>
